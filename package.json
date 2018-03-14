@@ -1,0 +1,19 @@
+{
+  "name": "cordova-plugin-kariboo",
+  "version": "0.0.1",
+  "description": "Kariboo cordova plugin",
+  "cordova": {
+    "id": "cordova-plugin-kariboo",
+    "platforms": [
+      "ios",
+      "android"
+    ]
+  },
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-ios",
+    "cordova-android"
+  ],
+  "author": "Fabio Tranchitella <fabio@tranchitella.eu>",
+  "license": "ISC"
+}
