@@ -13,6 +13,20 @@ d?xml version='1.0' encoding='utf-8'?>
          <param name="onload" value="true" />
       </feature>
     </config-file>
+    <config-file target="*-Info.plist" parent="UIBackgroundModes">
+      <array>
+        <string>location</string>
+      </array>
+    </config-file>
+     <config-file target="*-Info.plist" parent="NSLocationWhenInUseUsageDescription">
+      <string>Questa applicazione ha bisogno di accedere alla tua posizione per fornirti un'esperienza ottimale.</string>
+    </config-file>
+    <config-file target="*-Info.plist" parent="NSLocationAlwaysAndWhenInUseUsageDescription">
+      <string>Questa applicazione ha bisogno di accedere alla tua posizione per fornirti un'esperienza ottimale.</string>
+    </config-file>
+    <config-file target="*-Info.plist" parent="NSLocationAlwaysUsageDescription">
+      <string>Questa applicazione ha bisogno di accedere alla tua posizione per fornirti un'esperienza ottimale.</string>
+    </config-file>
     <config-file target="*-Info.plist" parent="KaribooID">
       <string>$KARIBOO_ID</string>
     </config-file>

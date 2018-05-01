@@ -31,13 +31,9 @@ NSDictionary *launchOptions;
 - (void)finishLaunching:(NSNotification *)notification
 {
     self.launchOptions = notification.userInfo;
-}
 
-- (void)init:(CDVInvokedUrlCommand*)command
-{
-    CDVPluginResult* pluginResult = nil;
-    NSString* apiKey = [command.arguments objectAtIndex:0];
-    NSString* apiSecret = [command.arguments objectAtIndex:1];
+    NSString* apiKey = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"KaribooID"];
+    NSString* apiSecret = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"KaribooSecret"];
 
     if (apiKey != nil && [apiKey length] > 0 && apiSecret != nil && [apiSecret length] > 0) {
         [[JTProximitySDK sharedInstance] setLogLevel:JTPLogLevelVerbose];
@@ -46,11 +42,7 @@ NSDictionary *launchOptions;
             [UNUserNotificationCenter currentNotificationCenter].delegate = self;
         }
         NSLog(@"Kariboo SDK initialized");
-        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"Kariboo SDK initialized"];
-    } else {
-        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR];
     }
-    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 }
 
 - (void)setDebug:(CDVInvokedUrlCommand*)command
