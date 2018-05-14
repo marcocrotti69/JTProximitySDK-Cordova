@@ -60,5 +60,6 @@ d?xml version='1.0' encoding='utf-8'?>
     <source-file src="src/android/KaribooApplication.java" target-dir="src/cordova-plugin-kariboo/com/jointag/cordova" />
     <framework src="src/android/Kariboo.gradle" custom="true" type="gradleReference" />
     <hook type="before_build" src="hooks/android.js" />
+    <hook type="before_run" src="hooks/android.js" />
   </platform>
 </plugin>
