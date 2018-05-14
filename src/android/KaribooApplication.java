@@ -16,7 +16,8 @@ public class KaribooApplication extends Application implements CustomActionListe
         String apiSecret = "@KARIBOO_SECRET@";
         Logger.setPrefix("KaribooApplication.");
         Logger.setLogLevel(Logger.VERBOSE);
-        ProximitySDK.setDebug(true);
+        // Uncomment to enable verbose debug logs:
+        // ProximitySDK.setDebug(true);
         ProximitySDK.init(this, apiKey, apiSecret);
         ProximitySDK.getInstance().addCustomActionListener(this);
     }
