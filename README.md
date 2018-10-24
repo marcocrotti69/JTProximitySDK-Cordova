@@ -61,32 +61,6 @@ You have to put in the `Info.plist` of your project the following settings:
 <string>Location usage description</string>
 ```
 
-### Debug Mode
-
-During the development process it's possible to initialize the SDK in debug mode. This way all the data will be sent to a sandbox server, preventing to put test data in production databases.
-
-Before enabling the debug mode, you must add the the following setting to your application `Info.plist` file:
-
-```xml
-<key>NSAppTransportSecurity</key>
-<dict>
-  <key>NSAllowsArbitraryLoads</key>
-  <true/>
-</dict>
-```
-
-To initialize the SDK in debug mode please modify the file karibooPlugin.m as follows:
-
-##### Objective-C
-
-```objc
-- (void)pluginInitialize
-{
-    self.debugEnabled = YES;
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(finishLaunching:) name:UIApplicationDidFinishLaunchingNotification object:nil];
-}
-```
-
 ### Handling Notifications
 
 To enable the SDK to correctly send and manager advertising notifications, you must implement the following method in your `UIApplicationDelegate`:
@@ -173,15 +147,6 @@ You can receive custom advertising events (if configured in the backend) to inte
 When the application user interacts with a custom-action notification, the `jtProximityDidReceiveCustomAction:` method is invoked by passing a `customAction` NSString object.
 
 ## Android specific settings
-
-### Debug Mode
-
-During the development process it's possible to initialize the SDK in debug mode. This way all the data will be sent to a sandbox server, preventing to put test data in production databases.
-To initialize the SDK in debug mode please modify the file KaribooApplication.java as follows:
-
-```java
-ProximitySDK.setDebug(true);
-```
 
 ### Customizing the notifications
 
