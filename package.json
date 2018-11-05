@@ -1,19 +1,12 @@
 {
-  "name": "cordova-plugin-kariboo",
+  "name": "cordova-plugin-jointag-proximity",
   "version": "0.1.0",
-  "description": "Kariboo cordova plugin",
+  "description": "Jointag Proximity Cordova plugin",
   "cordova": {
-    "id": "cordova-plugin-kariboo",
-    "platforms": [
-      "ios",
-      "android"
-    ]
+    "id": "cordova-plugin-jointag-proximity",
+    "platforms": ["ios", "android"]
   },
-  "keywords": [
-    "ecosystem:cordova",
-    "cordova-ios",
-    "cordova-android"
-  ],
-  "author": "Fabio Tranchitella <fabio@tranchitella.eu>",
+  "keywords": ["ecosystem:cordova", "cordova-ios", "cordova-android"],
+  "author": "Jointag <devteam@jointag.com>",
   "license": "ISC"
 }

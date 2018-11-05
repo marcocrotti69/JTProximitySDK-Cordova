@@ -11,7 +11,7 @@ public class KaribooApplication extends Application {
         super.onCreate();
         String apiKey = "@KARIBOO_ID@";
         String apiSecret = "@KARIBOO_SECRET@";
-        Logger.setTag("KaribooApplication.");
+        Logger.setTag("JointagProximitySDK.");
         Logger.setLogLevel(Logger.VERBOSE);
         ProximitySDK.init(this, apiKey, apiSecret);
     }

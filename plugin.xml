@@ -1,7 +1,7 @@
 d?xml version='1.0' encoding='utf-8'?>
-<plugin id="cordova-plugin-kariboo" version="0.0.1" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
-  <name>cordova-plugin-kariboo</name>
-  <js-module name="Kariboo" src="www/cordova-plugin-kariboo.js">
+<plugin id="cordova-plugin-jointag-proximity" version="0.1.0" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+  <name>cordova-plugin-jointag-proximity</name>
+  <js-module name="Kariboo" src="www/cordova-plugin-jointag-proximity.js">
     <clobbers target="Kariboo" />
   </js-module>
   <preference name="KARIBOO_ID" />
@@ -55,9 +55,9 @@ d?xml version='1.0' encoding='utf-8'?>
     <config-file parent="/*" target="AndroidManifest.xml">
       <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     </config-file>
-    <source-file src="src/android/KaribooPlugin.java" target-dir="src/cordova-plugin-kariboo/com/jointag/cordova" />
-    <source-file src="src/android/KaribooActivity.java" target-dir="src/cordova-plugin-kariboo/com/jointag/cordova" />
-    <source-file src="src/android/KaribooApplication.java" target-dir="src/cordova-plugin-kariboo/com/jointag/cordova" />
+    <source-file src="src/android/KaribooPlugin.java" target-dir="src/cordova-plugin-jointag-proximity/com/jointag/cordova" />
+    <source-file src="src/android/KaribooActivity.java" target-dir="src/cordova-plugin-jointag-proximity/com/jointag/cordova" />
+    <source-file src="src/android/KaribooApplication.java" target-dir="src/cordova-plugin-jointag-proximity/com/jointag/cordova" />
     <framework src="src/android/Kariboo.gradle" custom="true" type="gradleReference" />
     <hook type="before_build" src="hooks/android.js" />
     <hook type="before_run" src="hooks/android.js" />
