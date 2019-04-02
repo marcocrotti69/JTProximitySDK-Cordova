@@ -5,9 +5,9 @@ repositories {
 dependencies {
    compile 'com.jointag:proximitysdk:1.6.0'
    // other dependencies
-   compile 'com.android.support:appcompat-v7:25.2.0'
-   compile 'com.google.android.gms:play-services-ads:11.6.0'
-   compile 'com.google.android.gms:play-services-location:11.6.0'
+   compile 'com.android.support:appcompat-v7:26.0.0'
+   compile 'com.google.android.gms:play-services-ads:16.+'
+   compile 'com.google.android.gms:play-services-location:16.+'
 }
 
 android {

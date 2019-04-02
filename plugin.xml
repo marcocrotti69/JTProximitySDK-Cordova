@@ -1,16 +1,18 @@
 d?xml version='1.0' encoding='utf-8'?>
-<plugin id="cordova-plugin-jointag-proximity" version="0.1.0" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+<plugin id="cordova-plugin-jointag-proximity" version="0.2.0" xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        xmlns:android="http://schemas.android.com/apk/res/android">
   <name>cordova-plugin-jointag-proximity</name>
   <js-module name="Kariboo" src="www/cordova-plugin-jointag-proximity.js">
-    <clobbers target="Kariboo" />
+    <clobbers target="Kariboo"/>
   </js-module>
-  <preference name="KARIBOO_ID" />
-  <preference name="KARIBOO_SECRET" />
+  <preference name="KARIBOO_ID"/>
+  <dependecy id="cordova-plugin-enable-multidex" version="0.1.3"/>
+  <preference name="KARIBOO_SECRET"/>
   <platform name="ios">
     <config-file parent="/*" target="config.xml">
       <feature name="KaribooPlugin">
-        <param name="ios-package" value="KaribooPlugin" />
-         <param name="onload" value="true" />
+        <param name="ios-package" value="KaribooPlugin"/>
+        <param name="onload" value="true"/>
       </feature>
     </config-file>
     <config-file target="*-Info.plist" parent="UIBackgroundModes">
@@ -18,14 +20,17 @@ d?xml version='1.0' encoding='utf-8'?>
         <string>location</string>
       </array>
     </config-file>
-     <config-file target="*-Info.plist" parent="NSLocationWhenInUseUsageDescription">
-      <string>Questa applicazione ha bisogno di accedere alla tua posizione per fornirti un'esperienza ottimale.</string>
+    <config-file target="*-Info.plist" parent="NSLocationWhenInUseUsageDescription">
+      <string>Questa applicazione ha bisogno di accedere alla tua posizione per fornirti un'esperienza ottimale.
+      </string>
     </config-file>
     <config-file target="*-Info.plist" parent="NSLocationAlwaysAndWhenInUseUsageDescription">
-      <string>Questa applicazione ha bisogno di accedere alla tua posizione per fornirti un'esperienza ottimale.</string>
+      <string>Questa applicazione ha bisogno di accedere alla tua posizione per fornirti un'esperienza ottimale.
+      </string>
     </config-file>
     <config-file target="*-Info.plist" parent="NSLocationAlwaysUsageDescription">
-      <string>Questa applicazione ha bisogno di accedere alla tua posizione per fornirti un'esperienza ottimale.</string>
+      <string>Questa applicazione ha bisogno di accedere alla tua posizione per fornirti un'esperienza ottimale.
+      </string>
     </config-file>
     <config-file target="*-Info.plist" parent="KaribooID">
       <string>$KARIBOO_ID</string>
@@ -33,19 +38,14 @@ d?xml version='1.0' encoding='utf-8'?>
     <config-file target="*-Info.plist" parent="KaribooSecret">
       <string>$KARIBOO_SECRET</string>
     </config-file>
-    <source-file src="src/ios/KaribooPlugin.m" />
-    <framework src="JTProximitySDK" type="podspec" spec="~> 1.4.0" />
+    <source-file src="src/ios/KaribooPlugin.m"/>
+    <framework src="JTProximitySDK" type="podspec" spec="~> 1.4.0"/>
   </platform>
   <platform name="android">
-    <edit-config file="AndroidManifest.xml" target="/manifest/application" mode="merge">
-      <application android:name="com.jointag.cordova.KaribooApplication" />
-    </edit-config>
-    <edit-config file="AndroidManifest.xml" target="/manifest/application/activity" mode="merge">
-      <activity android:name="com.jointag.cordova.KaribooActivity" />
-    </edit-config>
     <config-file parent="/*" target="res/xml/config.xml">
       <feature name="KaribooPlugin">
-        <param name="android-package" value="com.jointag.cordova.KaribooPlugin" />
+        <param name="android-package" value="com.jointag.cordova.KaribooPlugin"/>
+        <param name="onload" value="true"/>
       </feature>
     </config-file>
     <config-file parent="/*" target="res/values/strings.xml">
@@ -55,11 +55,9 @@ d?xml version='1.0' encoding='utf-8'?>
     <config-file parent="/*" target="AndroidManifest.xml">
       <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     </config-file>
-    <source-file src="src/android/KaribooPlugin.java" target-dir="src/cordova-plugin-jointag-proximity/com/jointag/cordova" />
-    <source-file src="src/android/KaribooActivity.java" target-dir="src/cordova-plugin-jointag-proximity/com/jointag/cordova" />
-    <source-file src="src/android/KaribooApplication.java" target-dir="src/cordova-plugin-jointag-proximity/com/jointag/cordova" />
-    <framework src="src/android/Kariboo.gradle" custom="true" type="gradleReference" />
-    <hook type="before_build" src="hooks/android.js" />
-    <hook type="before_run" src="hooks/android.js" />
+    <source-file src="src/android/KaribooPlugin.java" target-dir="src/com/jointag/cordova"/>
+    <framework src="src/android/Kariboo.gradle" custom="true" type="gradleReference"/>
+    <hook type="before_build" src="hooks/android.js"/>
+    <hook type="before_run" src="hooks/android.js"/>
   </platform>
 </plugin>
