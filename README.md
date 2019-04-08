@@ -4,8 +4,6 @@
 
 1. [Installation and usage](#installation-and-usage)
 2. [Requirements and compatibility](#requirements-and-compatibility)
-3. [iOS specific settings](#ios-specific-settings)
-4. [Android specific settings](#android-specific-settings)
 
 ## Installation and usage
 
@@ -15,7 +13,7 @@ Make sure you have a Jointag Proximity / Kariboo client id (API key) and secret.
 
 Run the following command to add the plugin to your cordova project:
 ```bash
-$ cordova plugin add cordova-plugin-jointag-proximity --save --variable KARIBOO_ID="598322107a5b646fd1785fd9" --variable KARIBOO_SECRET="qxUe5vECy5DPeXmeFhPHOerVYdVDg34/StHkV3IPNdA927v4"
+$ cordova plugin add cordova-plugin-jointag-proximity --save --variable KARIBOO_ID="YOUR_API_KEY" --variable KARIBOO_SECRET="YOUR_API_SECRET"
 ```
 
 If you need to change your `KARIBOO_ID` or `KARIBOO_SECRET` after installation of the plugin, it's recommended that you remove and then re-add the plugin as above.
@@ -45,139 +43,4 @@ Minimum API level: `14` (Android 4.0)
 
 ### iOS requirements
 
-Minimum cordova-ios version: `4.0`
-
-## iOS specific settings
-
-### Location usage description
-You have to put in the `Info.plist` of your project the following settings:
-
-```xml
-<key>NSLocationAlwaysUsageDescription</key>
-<string>Location usage description</string>
-<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-<string>Location usage description</string>
-<key>NSLocationWhenInUseUsageDescription</key>
-<string>Location usage description</string>
-```
-
-### Handling Notifications
-
-To enable the SDK to correctly send and manager advertising notifications, you must implement the following method in your `UIApplicationDelegate`:
-
-##### Objective-C
-
-```objc
-- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
-    if ([[JTProximitySDK sharedInstance] application:application didReceiveLocalNotification:notification]) {
-        return;
-    }
-    // Other application logics
-}
-```
-
-##### Swift
-
-```swift
-func application(_ application: UIApplication, didReceive notification: UILocalNotification) {
-    if (ProximitySDK.instance().application(application, didReceive: notification)) {
-        return
-    }
-    // Other application logics
-}
-```
-
-If you plan to support **iOS 10.0** or later, you must also add this code in your `UNUserNotificationCenterDelegate` methods:
-
-##### Objective-C
-
-```objc
-- (void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions))completionHandler __IOS_AVAILABLE(10.0) {
-    if ([[JTProximitySDK sharedInstance] userNotificationCenter:center willPresentNotification:notification]) {
-        completionHandler(UNNotificationPresentationOptionAlert|UNNotificationPresentationOptionBadge|UNNotificationPresentationOptionSound);
-        return;
-    }
-    // Other application logics
-}
-
-- (void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)(void))completionHandler __IOS_AVAILABLE(10.0) {
-    if ([[JTProximitySDK sharedInstance] userNotificationCenter:center didReceiveNotificationResponse:response]) {
-        completionHandler();
-        return;
-    }
-    // Other application logics
-}
-```
-
-##### Swift
-
-```swift
-@available(iOS 10.0, *)
-func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-    if ProximitySDK.instance().userNotificationCenter(center, willPresent: notification) {
-        completionHandler([.alert, .badge, .sound])
-        return
-    }
-    // Other application logics
-}
-
-@available(iOS 10.0, *)
-func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-    if ProximitySDK.instance().userNotificationCenter(center, didReceive: response) {
-        completionHandler()
-        return
-    }
-    // Other application logics
-}
-```
-
-### Disable automatic permission requests
-
-You can disable the SDK automatic location and notification permission requests during initialization by setting to NO the following properties on `JTProximitySDK.sharedInstance`:
-
-- `promptForPushNotifications` : set to `NO` to disable the automatic request for user notifications permission
-- `promptForLocationAuthorization` : set to `NO` to disable the automatic request for user location permission
-
-Note: the properties must be set before calling any `initWithLaunchOptions:apiKey:apiSecret:` method.
-
-### Receive custom events
-
-You can receive custom advertising events (if configured in the backend) to integrate application-specific features by using the `customDelegate` property of `ProximitySDK` instance.
-
-When the application user interacts with a custom-action notification, the `jtProximityDidReceiveCustomAction:` method is invoked by passing a `customAction` NSString object.
-
-## Android specific settings
-
-### Customizing the notifications
-
-It is possibile to to customize the look (icon and title) of the advertising notifications and the monitoring notification.
-
-In order to customize the icon, include in your project a drawable named `ic_stat_jointag_default`.
-
-We recommend using [Android Asset Studio](https://romannurik.github.io/AndroidAssetStudio/icons-notification.html) to quickly and easily generate small icons with the correct settings.
-
-If you prefer to create your own icons, make sure to generate the icon for the following densities:
-
-- mdpi
-- hdpi
-- xhdpi
-- xxhdpi
-- xxxhdpi
-
-In order to customize the title for all notifications, include in your project a string resource named `jointag_notification_title`.
-
-To customize the message of the monitoring notification, include in your project a string resource named `jointag_notification_message`.
-
----
-
-> **Note**: with some versions of the android build tool a duplicate resource error may arise during the resource merging phase of the build. In this case it is sufficient to include the new drawable resources using a version qualifier. Eg:
->
-> `drawable-hdpi-v7/ic_stat_jointag_default.png`, `drawable-mdpi-v7/ic_stat_jointag_default.png`, `drawable-xhdpi-v7/ic_stat_jointag_default.png`, etc…
-
-### Receive custom events
-
-You can receive custom advertising events (if configured in the backend) to integrate application-specific features by registering a `CustomActionListener` object using the `addCustomActionListener` method of `ProximitySDK`.
-
-When the application user interacts with a custom-action notification, the `onCustomAction` method is invoked by passing a `payload` string object.
-
-Since the `CustomActionListener` object is retained by `ProximitySDK`, remember to remove the listener when the owning instance is being deallocated to avoid unwanted retaining or NullPointerException. It is therefore good practice to use a long-life object as CustomActionListener, such as the Application object.
+Minimum cordova-ios version: `4.3.0`
