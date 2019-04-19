@@ -44,3 +44,17 @@ Minimum API level: `14` (Android 4.0)
 ### iOS requirements
 
 Minimum cordova-ios version: `4.3.0`
+
+
+## Troubleshooting on Android
+
+#### Multidex error
+if you occur in multidex error with the following message : 
+
+```The number of method references in a .dex file cannot exceed 64k```
+
+you can fix it with ```cordova-plugin-enable-multidex```  plugin 
+
+## Google Play Services and Android Support Library compatibility
+
+As you can see [here](https://github.com/jointag/JTProximitySDK-Android) this plugin uses internally Google Play Services library (version >= 11.6.0) and Android Support Library library (version >= 25.2.0), if you have other cordova plugins using these libraries you should fix manually version conflict. Please note the minimum supported versions.
