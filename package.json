@@ -1,5 +1,5 @@
 {
-  "name": "cordova-plugin-jointag-proximity",
+  "name": "@jointag/cordova-plugin-jointag-proximity",
   "version": "0.2.0",
   "description": "Jointag Proximity Cordova plugin",
   "cordova": {
