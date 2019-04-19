@@ -1,6 +1,6 @@
 {
   "name": "@jointag/cordova-plugin-jointag-proximity",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Jointag Proximity Cordova plugin",
   "cordova": {
     "id": "cordova-plugin-jointag-proximity",
@@ -8,5 +8,9 @@
   },
   "keywords": ["ecosystem:cordova", "cordova-ios", "cordova-android"],
   "author": "Jointag <devteam@jointag.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jointag/JTProximitySDK-Cordova"
+  },
   "license": "ISC"
 }
