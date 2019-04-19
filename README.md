@@ -13,7 +13,7 @@ Make sure you have a Jointag Proximity / Kariboo client id (API key) and secret.
 
 Run the following command to add the plugin to your cordova project:
 ```bash
-$ cordova plugin add cordova-plugin-jointag-proximity --save --variable KARIBOO_ID="YOUR_API_KEY" --variable KARIBOO_SECRET="YOUR_API_SECRET"
+$ cordova plugin add @jointag/cordova-plugin-jointag-proximity --save --variable KARIBOO_ID="YOUR_API_KEY" --variable KARIBOO_SECRET="YOUR_API_SECRET"
 ```
 
 If you need to change your `KARIBOO_ID` or `KARIBOO_SECRET` after installation of the plugin, it's recommended that you remove and then re-add the plugin as above.
